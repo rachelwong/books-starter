@@ -1,0 +1,12 @@
+<h1>Authors</h1>
+
+<a href="/authors/new">Create New Author</a>
+
+<% for (author of authors) { %>
+    <div>
+        <p>Name: <%= author.name %></p>
+        <p>Bio: <%= author.bio %></p>
+        <p>Gender: <%= author.gender %></p>
+    </div>
+    <hr />
+<% } %>

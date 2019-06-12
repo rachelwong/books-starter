@@ -1,7 +1,6 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose")
 
-const AuthorSchema = new Schema({
+const AuthorSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -15,6 +14,8 @@ const AuthorSchema = new Schema({
         enum: ['male', 'female', 'non binary'],
         default: 'non binary'
     }
-});
+})
 
-module.exports = AuthorSchema;
+const AuthorModel = mongoose.model("author", AuthorSchema)
+
+module.exports = { AuthorModel, AuthorSchema }
