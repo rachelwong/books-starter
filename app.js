@@ -21,5 +21,6 @@ app.use(methodOverride('_method', {
   methods: ['POST', 'GET']
 }))
 app.use('/authors', require("./author_routes"))
+app.use('/books', require("./book_routes"))
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`))
