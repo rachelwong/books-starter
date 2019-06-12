@@ -7,6 +7,8 @@ router.get("/", BookController.index)
 
 router.get("/new", BookController.make)
 
+//router.put("/:id", BookController.update)
+
 router.get("/:id", BookController.show)
 
 router.post("/", BookController.create)

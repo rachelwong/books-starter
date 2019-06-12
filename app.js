@@ -4,7 +4,8 @@ const bodyParser = require("body-parser")
 const methodOverride = require("method-override")
 const app = express()
 const port = 3000
-
+// const multer = require('multer')
+// const fs = require('fs')
 mongoose.connect("mongodb://localhost/books_r_us", {
   useNewUrlParser: true
 })
@@ -12,7 +13,6 @@ mongoose.connection.on("error", err => console.log(err))
 
 app.set("view engine", "ejs")
 
-// use statements must be before your routes
 app.use(bodyParser.urlencoded({
   extended: false
 }))

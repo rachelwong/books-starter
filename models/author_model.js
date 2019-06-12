@@ -1,8 +1,6 @@
 const mongoose = require("mongoose")
 
-// create a schema
 const AuthorSchema = new mongoose.Schema({
-    // set properties as name, bio, gender
     name: {
         type: String,
         required: true
@@ -18,7 +16,6 @@ const AuthorSchema = new mongoose.Schema({
     }
 })
 
-// export the schema because you might us it elsewhere
 const AuthorModel = mongoose.model("author", AuthorSchema)
 
 module.exports = {

@@ -6,7 +6,6 @@ const {
 } = require("../models/author_model")
 
 async function create(req, res) {
-    // logic for creating a resource
     let {
         title,
         published,
@@ -23,7 +22,6 @@ async function create(req, res) {
 }
 
 async function index(req, res) {
-    //showed a list of all the resources
     let books = await BookModel.find().populate('author')
 
     res.render('layout', {
@@ -31,29 +29,41 @@ async function index(req, res) {
         title: 'All Books',
         books
     })
-    // res.render("book/index", {books})
 }
 
 async function show(req, res) {
-    // req.params.id is to get the id from the request object
-    // the populate method go to  database use id in thpopulate field nad fethc object and insert into the book instead of just the id 
     let book = await BookModel.findById(req.params.id).populate('author')
     res.render('layout', {
         view: 'book/show',
         title: 'Book',
-        book // returning only the book that we are looking for by id
+        book
     })
 }
 
+// async function update(req, res) {
+// let {
+//     title,
+//     published,
+//     author,
+//     img
+// } = req.body
+// let book = await BookModel.findOneAndUpdate({
+//         title,
+//         published,
+//         author
+//     })
+//     .catch(err => res.status(500).send(err))
+
+// res.redirect("/books" + req.params.id) // redirect back to show one book 
+// }
+
 async function make(req, res) {
-    //shows the form to create the resource
     const authors = await AuthorModel.find()
     res.render('layout', {
         view: 'book/new',
         title: 'New Book',
-        authors // create a list of all authors so that you can create a new book by choosing from a list of existing authors
+        authors
     })
-    // res.render("book/new")
 }
 
 async function destroy(req, res) {
@@ -66,5 +76,6 @@ module.exports = {
     index,
     make,
     show,
-    destroy
+    destroy,
+    // update
 }
