@@ -1,9 +1,19 @@
-const { AuthorModel } = require("../models/author_model")
+const {
+    AuthorModel
+} = require("../models/author_model")
 
 async function create(req, res) {
     //logic for creating a resource
-    let {name, bio, gender} = req.body
-    let author = await AuthorModel.create({ name, bio, gender })
+    let {
+        name,
+        bio,
+        gender
+    } = req.body
+    let author = await AuthorModel.create({
+            name,
+            bio,
+            gender
+        })
         .catch(err => res.status(500).send(err))
 
     res.redirect("/authors")
@@ -20,6 +30,16 @@ async function index(req, res) {
     // res.render("author/index", {authors})
 }
 
+async function show(req, res) {
+    // req.params.id is to get the id from the request object
+    let author = await AuthorModel.findById(req.params.id)
+    res.render('layout', {
+        view: 'author/show',
+        title: 'Author',
+        author // returning only the author that we are looking for by id
+    })
+}
+
 function make(req, res) {
     //shows the form to create the resource
     res.render('layout', {
@@ -29,9 +49,14 @@ function make(req, res) {
     // res.render("author/new")
 }
 
-
+async function destroy(req, res) {
+    await AuthorModel.findByIdAndRemove(req.params.id)
+    res.redirect("/authors")
+}
 module.exports = {
     create,
     index,
-    make
+    make,
+    show,
+    destroy
 }

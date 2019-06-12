@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Books R Us</title>
+    <title>Books R Us - <%= title %></title>
 </head>
+
 <body>
     <%- include(view) -%>
+    <!-- <script>
+        // event handler
+        function deleteAuthor(id) {
+            // this is the HTTP request,
+            // The .then is for when you delete it, and it resolves, redirect it to the authors
+            // The redirection has to be done on the clientside and not serverside because this is an ajax call. 
+            fetch(`/authors/${id}`, {
+                method: 'delete'
+            }).then(res => location.href = '/authors')
+        }
+    </script> -->
 </body>
+
 </html>
