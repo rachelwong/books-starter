@@ -13,6 +13,10 @@ const AuthorSchema = new mongoose.Schema({
         type: String,
         enum: ['male', 'female', 'non binary'],
         default: 'non binary'
+    },
+    image: {
+        type: String,
+        
     }
 })
 

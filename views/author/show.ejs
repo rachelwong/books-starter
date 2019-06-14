@@ -1,10 +1,12 @@
 <h1><%= author.name %></h1>
+<img src="<%= author.image %>" />
 <h3><%= author.gender %></h3>
 <p><%= author.bio %></p>
+
+<h2>Books</h2>
+
+<% for (book of books) { %>
+<a href="/books/<%= book._id %>"><%= book.title %> (<%= book.published.getFullYear() %>)</a>
+<% } %>
 <hr>
-
-<!-- <% for (book of books) { %>
-<li><%= book.name %></li>
-<% } %> -->
-
 <a href="/authors">Back to Authors</a>
